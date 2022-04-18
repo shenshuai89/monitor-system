@@ -24,7 +24,7 @@ module.exports = {
         res.json({ id: 1 });
       });
       devServer.app.post("/error", function (req, res) {
-        res.setStatus(500);
+        res.sendStatus(500);
       });
     },
   },

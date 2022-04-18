@@ -9,16 +9,43 @@
   <body>
     <div id="container">
       <div class="content">
-        <input type="button" value="点击报错" onclick="errorClick()" />
+        <!-- <input type="button" value="点击报错" onclick="errorClick()" />
         <input
           type="button"
           value="点击Promise报错"
           onclick="promiseErrorClick()"
         />
-        <img src="https://www.google.com/15af41ec-e6cb-4478-8fad-1a47402f0f25.png">
+        <img src="https://www.google.com/15af41ec-e6cb-4478-8fad-1a47402f0f25.png"> -->
+        <input
+          type="button"
+          value="ajax success"
+          onclick="sendSuccessClick()"
+        />
+        <input type="button" value="ajax error" onclick="sendErrorClick()" />
       </div>
     </div>
     <script>
+      function sendSuccessClick() {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "/success", true);
+        xhr.responseType = "json";
+        xhr.onload = function () {
+          console.log(xhr.response);
+        };
+        xhr.send();
+      }
+      function sendErrorClick() {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/error", true);
+        xhr.responseType = "json";
+        xhr.onload = function () {
+          console.log(xhr.response);
+        };
+        xhr.onerror = function () {
+          console.log(xhr.response);
+        };
+        xhr.send("name=XMLHttpRequest");
+      }
       function errorClick(event) {
         window.somevar.error = "error";
       }
