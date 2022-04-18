@@ -8,7 +8,16 @@
 
   <body>
     <div id="container">
-      <div class="content" style="width: 1920px; word-wrap: break-word">
+      <div
+        class="content"
+        style="
+          width: 600px;
+          height: 600px;
+          word-wrap: break-word;
+          background-color: gray;
+        "
+      >
+        <button id="clickBtn" onclick="clickMe()">点我</button>
         <!-- <input type="button" value="点击报错" onclick="errorClick()" />
         <input
           type="button"
@@ -26,8 +35,26 @@
     </div>
     <script>
       // 如果没有内容填充，出现白屏，就会上报内容
-      let content = document.getElementsByClassName("content")[0];
-      content.innerHTML = "<span>@</span>".repeat(10000);
+      //   let content = document.getElementsByClassName("content")[0];
+      //   content.innerHTML = "<span>@</span>".repeat(10000);
+
+      // DOM 解析完成
+    //   document.addEventListener("DOMContentLoaded", () => {
+    //     let start = Date.now();
+    //     while (Date.now() - start < 300) {}
+    //   });
+      function clickMe() {
+        let start = Date.now();
+        while (Date.now() - start < 1000) {}
+      }
+
+      setTimeout(() => {
+        let content = document.getElementsByClassName("content")[0];
+        let h1 = document.createElement("h1");
+        h1.innerHTML = "我是这个页面中最有意义的内容";
+        h1.setAttribute("elementtiming", "meaningful"); //设置页面中有意义 的内容
+        content.appendChild(h1);
+      }, 2000);
 
       function sendSuccessClick() {
         let xhr = new XMLHttpRequest();
@@ -62,13 +89,6 @@
         let start = Date.now();
         while (Date.now() - start < 1000) {}
       }
-      //   setTimeout(() => {
-      //     let content = document.getElementsByClassName("content")[0];
-      //     let h1 = document.createElement("h1");
-      //     h1.innerHTML = "我是这个页面中最有意义的内容";
-      //     h1.setAttribute("elementtiming", "meaningful");
-      //     content.appendChild(h1);
-      //   }, 2000);
     </script>
   </body>
 </html>
