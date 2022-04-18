@@ -8,7 +8,7 @@
 
   <body>
     <div id="container">
-      <div class="content">
+      <div class="content" style="width: 1920px; word-wrap: break-word">
         <!-- <input type="button" value="点击报错" onclick="errorClick()" />
         <input
           type="button"
@@ -16,15 +16,19 @@
           onclick="promiseErrorClick()"
         />
         <img src="https://www.google.com/15af41ec-e6cb-4478-8fad-1a47402f0f25.png"> -->
-        <input
+        <!-- <input
           type="button"
           value="ajax success"
           onclick="sendSuccessClick()"
         />
-        <input type="button" value="ajax error" onclick="sendErrorClick()" />
+        <input type="button" value="ajax error" onclick="sendErrorClick()" /> -->
       </div>
     </div>
     <script>
+      // 如果没有内容填充，出现白屏，就会上报内容
+      let content = document.getElementsByClassName("content")[0];
+      content.innerHTML = "<span>@</span>".repeat(10000);
+
       function sendSuccessClick() {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", "/success", true);
