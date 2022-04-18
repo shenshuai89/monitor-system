@@ -22,7 +22,9 @@
         window.somevar.error = "error";
       }
       function promiseErrorClick(event) {
-        console.log("promiseErrorClick", event);
+        new Promise(function(resolve, reject) {
+            window.somevar.error = "promiseError"
+        })
       }
       function clickMe() {
         let start = Date.now();
